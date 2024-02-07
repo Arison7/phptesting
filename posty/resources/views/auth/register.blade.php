@@ -22,7 +22,7 @@
 				<div class="mb-4">
 					<label for="username" class="sr-only">Username</label>
 					<input type="text" name="username" id="username" placeholder="Your username"
-					class="bg-gray-100 border-2 w-full p-4 rounded-lg" value="{{old('username')}}">
+					class="bg-gray-100 border-2 w-full p-4 rounded-lg" value="{{old('ame')}}">
 
 					@error('username')
 						<div class="text-red-500 mt-2 text-sm">
