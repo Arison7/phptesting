@@ -1,0 +1,44 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Starting Vite",
+				"type": "shell",
+				"command": "npm run dev",
+				"group": "none",
+				"presentation": {
+					"reveal": "always",
+					"focus": false,
+					"panel": "new",
+				},
+				"runOptions": {
+					"runOn": "folderOpen"
+				}
+			},
+			{
+				"label": "Starting phpServer",
+				"type": "shell",
+				"command": "php artisan serve",
+				"group": "none",
+				"presentation": {
+					"reveal": "always",
+					"focus": false,
+					"panel": "new",
+				},
+				"runOptions": {
+					"runOn": "folderOpen"
+				}
+
+
+
+			}
+		]
+	}
+}
