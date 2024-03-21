@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Postcode;
 
 class PowerPlant extends Model
 {
@@ -34,7 +35,8 @@ class PowerPlant extends Model
      * 
      * @var array
      */
-    protected $fillable = ['name'];
+    //protected $fillable = ['name','postcode_nr'];
+    protected $guarded = ['name'];
 
     /**
      * Indicates if the model should be timestamped.
@@ -42,6 +44,11 @@ class PowerPlant extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    public function postcode() 
+    {
+        return $this->belongsTo(Postcode::class,'postcode_nr','postcode');
+    }
 
     
 }
