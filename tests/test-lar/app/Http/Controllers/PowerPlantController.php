@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\PowerPlant;
 use Illuminate\Http\Request;
 
 class PowerPlantController extends Controller
@@ -12,7 +13,7 @@ class PowerPlantController extends Controller
      */
     public function index()
     {
-        //
+        return view('powerPlants.index');
     }
 
     /**
@@ -61,5 +62,13 @@ class PowerPlantController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+    public function fetch() 
+    {
+        return response()->json(PowerPlant::with('postcode')->get());
+    }
+    public function selective(Request $request) 
+    {
+        dd(Powerplant::wherein('id',$request->powerplants)->get());
     }
 }

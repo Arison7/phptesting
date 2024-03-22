@@ -1,23 +1,43 @@
-const map = L.map('map').setView([51.505, -0.09], 13);
+const map = L.map('map').setView([52.2, 5.1], 7);
+
 // Add the base tile layer
 const tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// Sample marker data
-const markerData = [
-	{ coords: [51.5, -0.09], name: 'Marker 1' },
-	{ coords: [51.51, -0.1], name: 'Marker 2' },
-	{ coords: [51.49, -0.1], name: 'Marker 3' }
-];
+async function getMarkers() {
+	const response = await fetch('/fetch');
+	const data = await response.json();
+	return data;
+}
+const powerPlants = getMarkers();
+powerPlants.then(data => {
+	const query = document.getElementById('query');
+	data.forEach((powerPlant) => {
+		let iconSketch = L.Icon.Default.extend({
+			options : {
+				className: 'is-red'
+			}
+		})
+		let icon = new iconSketch();
+		const newMarker = L.marker([powerPlant.postcode.latitude,powerPlant.postcode.longitude])
+		.addTo(map);
 
-// Add markers to the map
-markerData.forEach(function(marker) {
-	const newMarker = L.marker(marker.coords).addTo(map).bindPopup(marker.name);
 
-	// Add click event listener to marker
-	newMarker.on('click', function() {
-		alert('Marker ' + marker.name + ' clicked!');
-		// You can perform any JavaScript action you want here
+		// Add click event listener to marker
+		newMarker.on('click', function() {
+			if(newMarker.options.icon.options.className === 'is-red'){
+				newMarker.setIcon(L.Icon.Default.prototype);
+				document.getElementById("input" + powerPlant.id).remove();
+			}else{
+				newMarker.setIcon(icon);
+				let input = document.createElement('input');
+				input.setAttribute("type", "hidden");
+				input.setAttribute("name", "powerplants[]");
+				input.setAttribute("value", powerPlant.id);
+				input.setAttribute("id", "input" + powerPlant.id);
+				query.appendChild(input);
+			}
+		});
 	});
 });
