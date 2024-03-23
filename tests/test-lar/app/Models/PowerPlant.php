@@ -35,8 +35,7 @@ class PowerPlant extends Model
      * 
      * @var array
      */
-    //protected $fillable = ['name','postcode_nr'];
-    protected $guarded = ['name'];
+    protected $fillable = ['name','value','postcode_nr'];
 
     /**
      * Indicates if the model should be timestamped.

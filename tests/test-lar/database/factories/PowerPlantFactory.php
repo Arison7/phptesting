@@ -19,6 +19,7 @@ class PowerPlantFactory extends Factory
     {
         return [
             'name' => Str::random(5),
+            'value' => $this->faker->numberBetween(0, 100),
             'postcode_nr' => $this->faker->number(4,true)
         ];
     }

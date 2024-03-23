@@ -69,6 +69,13 @@ class PowerPlantController extends Controller
     }
     public function selective(Request $request) 
     {
-        dd(Powerplant::wherein('id',$request->powerplants)->get());
+        // redirect back if no powerplants are selected
+        // with a status
+        if($request->powerplants == null) {
+            return redirect()->back()->with('status','Please select a powerplant');
+        }
+        $powerplants = Powerplant::wherein('id',$request->powerplants)->get();
+
+        return view('powerPlants.selective',['powerplants'=>$powerplants]);
     }
 }

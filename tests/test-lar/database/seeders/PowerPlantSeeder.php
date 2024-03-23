@@ -20,6 +20,7 @@ class PowerPlantSeeder extends Seeder
             // Create instances of ModelA
             PowerPlant::create([
                 'name' => Str::random(5), // Get value from ModelA factory
+                'value' => rand(0, 100), 
                 'postcode_nr' => $postcode->postcode // Or any field you want from ModelB
                 // Add other fields as needed
             ]);
