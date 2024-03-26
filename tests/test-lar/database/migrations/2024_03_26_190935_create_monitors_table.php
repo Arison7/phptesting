@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('power_plants', function (Blueprint $table) {
-            $table->foreignId('postcode_nr')->reference('postcode')->on('4pp')->contrained();
+        Schema::create('monitors', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->nullable();
+            $table->integer('value_goal');
+            $table->timestamps();
         });
     }
 
@@ -21,9 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('power_plants', function (Blueprint $table) {
-            $table->dropColumn('postcode_nr');
-
-        });
+        Schema::dropIfExists('monitors');
     }
 };

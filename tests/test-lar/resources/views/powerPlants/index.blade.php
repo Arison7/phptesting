@@ -10,7 +10,7 @@
 @endsection
 @section('content')
 	<div id="map"></div>
-	<form action="{{route('powerPlants.selective.index')}}" method="POST" id="query"> 
+	<form action="{{route('powerPlants.selective.index')}}" method="GET" id="query"> 
 		@csrf
 		@if(session('status'))
 			<p class="is-warning">{{session('status')}}</p>

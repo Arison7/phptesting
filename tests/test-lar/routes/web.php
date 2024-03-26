@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PowerPlantController;
 use App\Models\PowerPlant;
+use App\Http\Controllers\MonitorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::resource('powerPlants', PowerPlantController::class);
 Route::get('/',[PowerPlantController::class , 'index']);
 Route::get('fetch', [PowerPlantController::class, 'fetch'])->name('fetch');
-Route::post('powerplants/selective', [PowerPlantController::class, 'selective'])->name('powerPlants.selective.index');
+Route::get('powerplants/selective', [PowerPlantController::class, 'selective'])->name('powerPlants.selective.index');
+Route::post('monitors/store', [MonitorController::class, 'store'])->name('monitors.store');

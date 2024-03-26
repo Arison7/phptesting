@@ -9,6 +9,7 @@
 	<title>Proof of concept</title>
 </head>
 <body>
+	@yield('popups')
 	<nav class="nav-container">
 		<ul class="nav-list">
 			<li><a href="{{route('powerPlants.index')}}">Power Plants</a></li>
