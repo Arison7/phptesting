@@ -15,7 +15,7 @@
 			<label for="user">User</label>
 			<input type="text" name="user" disabled value="username">
 			@foreach($powerplants as $powerplant)
-			<input type="hidden" name="powerplants[]" value="{{$powerplant->id}}">
+				<input type="hidden" name="powerplants[]" value="{{$powerplant->id}}">
 			@endforeach
 			<div class="buttons">
 				<button class="basic-button" type="submit">Submit</button>

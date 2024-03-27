@@ -21,8 +21,13 @@ class MonitorController extends Controller
         }
 
         $monitor->save();
-
-        return redirect()->back();
+        
+        return view('monitors.show',['monitor' => $monitor]);
+    }
+    function destroy(Monitor $monitor)
+    {
+        $monitor->delete();
+        return redirect()->route('index');
     }
 
 
